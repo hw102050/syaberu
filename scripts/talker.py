@@ -51,6 +51,7 @@ def ros_node():
         talk_sentence = String()
         talk_sentence.data = talker.parrot_has_good_memory
         pub_talker.publish(talk_sentence)
+        rospy.loginfo("Talker say: {}".format(talker.parrot_has_good_memory))
         rospy.sleep(durationT)
 
 

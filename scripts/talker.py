@@ -48,10 +48,11 @@ def ros_node():
     # keeping speak
     durationT = rospy.Duration.from_sec(3)
     while not rospy.is_shutdown():
-        talk_sentence = String()
-        talk_sentence.data = talker.parrot_has_good_memory
-        pub_talker.publish(talk_sentence)
-        rospy.loginfo("Talker say: {}".format(talker.parrot_has_good_memory))
+        if not talker.shutup_flg:
+            talk_sentence = String()
+            talk_sentence.data = talker.parrot_has_good_memory
+            pub_talker.publish(talk_sentence)
+            rospy.loginfo("Talker say: {}".format(talker.parrot_has_good_memory))
         rospy.sleep(durationT)
 
 
